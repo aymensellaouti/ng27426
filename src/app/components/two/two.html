@@ -1,0 +1,9 @@
+<p
+  (click)="two = 'une nouvelle valeur'"
+>Le contenu de two est : {{ two }}</p>
+<!--
+  Maintenant le input et l'attribut two ne font plus qu'un
+  C'est à dire que la valeur de l'un est toujours égale à l'autre
+
+-->
+<input [(ngModel)]="two" type="text" class="form-control">
