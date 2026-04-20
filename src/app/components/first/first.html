@@ -1,0 +1,13 @@
+<p #monParagraph [hidden]="isHidden" >{{name}} works!</p>
+<button
+  (click)="showHide()"
+  class="btn btn-info">
+  show / hide
+</button>
+<input
+  #myInput
+  (change)="changeMessage(myInput.value)"
+  type="text"
+  class="form-control">
+Le contenu actuel de l'input est : {{message}}
+<app-second/>
