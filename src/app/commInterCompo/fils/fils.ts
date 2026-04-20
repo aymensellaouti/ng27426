@@ -1,4 +1,4 @@
-import { Component, input, signal } from '@angular/core';
+import { Component, input, output, signal } from '@angular/core';
 
 @Component({
   selector: 'app-fils',
@@ -8,10 +8,13 @@ import { Component, input, signal } from '@angular/core';
 })
 export class Fils {
   // fils (x) {}
-  messageDePapa = input.required({
-    alias: 'message',
-    transform: (value: string) => {
-      'Papa a dit : ' + value;
-    }
-  })
+  messageDePapa = input.required<string>({
+    alias: 'message'
+  });
+
+  sendMessageToPapa = output<string>();
+
+  triggerSendMessageToPapa() {
+    this.sendMessageToPapa.emit("Ok mais je garde la monnaie :D")
+  }
 }
