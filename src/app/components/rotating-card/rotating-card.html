@@ -7,12 +7,12 @@
             <img src="images/rotating_card_thumb2.png">
           </div>
           <div class="user">
-            <img class="img-circle" src="images/rotating_card_profile3.png">
+            <img class="img-circle" src="images/{{path}}">
           </div>
           <div class="content">
             <div class="main">
-              <h3 class="name">John Marvel</h3>
-              <p class="profession">CEO</p>
+              <h3 class="name">{{firstname}} {{name}}</h3>
+              <p class="profession">{{job}}</p>
               <p class="text-center">"I'm the new Sinatra, and since I made it here I can make it anywhere, yeah, they love
                 me everywhere"</p>
             </div>
@@ -65,9 +65,9 @@
     </div>
   </div>
   <div class="col">
-    firstname <input type="text" class="form-control">
-    name <input type="text" class="form-control">
-    job <input type="text" class="form-control">
-    path <input type="text" class="form-control">
+    firstname <input [(ngModel)]="firstname" type="text" class="form-control">
+    name <input [(ngModel)]="name" type="text" class="form-control">
+    job <input [(ngModel)]="job" type="text" class="form-control">
+    path <input [(ngModel)]="path" type="text" class="form-control">
   </div>
 </div>
