@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 
 @Component({
   selector: 'app-color',
@@ -8,14 +8,14 @@ import { Component } from '@angular/core';
 })
 export class Color {
   private defaultColor = 'red';
-  color = this.defaultColor;
+  color = signal(this.defaultColor);
 
   changeColor(colorInput: HTMLInputElement) {
-    this.color = colorInput.value;
+    this.color.set(colorInput.value);
     colorInput.value = '';
   }
 
   reset() {
-    this.color = this.defaultColor;
+    this.color.set(this.defaultColor);
   }
 }
