@@ -1,5 +1,5 @@
 <p>Counter : {{ counter() }}</p>
-
+<p (click)="addAymen()">Je posséde {{namesLegth()}} noms</p>
 <button (click)="incremet()" class="btn btn-success">
   increment
 </button>
@@ -7,3 +7,11 @@
 <button (click)="reset()" class="btn btn-danger">
   reset
 </button>
+
+<ol class="list-group">
+  @for (name of names(); track $index) {
+    <li>
+      {{name}}
+    </li>
+  }
+</ol>

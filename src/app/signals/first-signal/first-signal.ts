@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, computed, signal } from '@angular/core';
 
 @Component({
   selector: 'app-first-signal',
@@ -8,7 +8,14 @@ import { Component, signal } from '@angular/core';
 })
 export class FirstSignal {
   counter = signal(0);
+  names = signal(['Alexandre', 'Pedro', 'Miora', 'El Mehdi', 'Sami', 'Karim'])
+  namesLegth = computed(() => this.names().length);
 
+  addAymen() {
+    this.names.update(
+      (nameArray) => [...nameArray, 'aymen']
+    )
+  }
   incremet() {
     this.counter.update(
       (valeurActuelle) => valeurActuelle + 1
