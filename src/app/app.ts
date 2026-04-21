@@ -11,13 +11,14 @@ import { Ngstyle } from "./directives/ngstyle/ngstyle";
 import { First } from "./components/first/first";
 import { Second } from "./components/second/second";
 import { MiniWordComponent } from "./directives/mini-word/mini-word.component";
+import { Ngclass } from "./directives/ngclass/ngclass";
 // métadonnée un décorateur qui informe le compilateur
 // que cette classe c'est un composant
 @Component({
   // Le sélécteur css qui va identifier le composant
   selector: 'app-root',
   // J'importe les dépendances de mon template
-  imports: [Color, Two, RotatingCard, FirstSignal, Som, TtcComponent, Pere, CvPage, Ngstyle, First, Second, MiniWordComponent],
+  imports: [Color, Two, RotatingCard, FirstSignal, Som, TtcComponent, Pere, CvPage, Ngstyle, First, Second, MiniWordComponent, Ngclass],
   // le lien vers le HTML que je gére
   templateUrl: './app.html',
   // Le css associé à ce composant
