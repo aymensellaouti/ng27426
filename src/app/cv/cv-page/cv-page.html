@@ -1,5 +1,10 @@
 <div class="row">
   <div class="col">
+    <div class="alert alert-warning">
+      {{today() | date: 'full' | uppercase }}
+      <p>{{1 | btc2Usd | currency}}</p>
+      <p>{{1 | btc2Usd:false}}</p>
+    </div>
     <app-cvs-list (forwardCv)="onForwardCv($event)" [cvs]="cvs()" />
   </div>
   <div class="col">
