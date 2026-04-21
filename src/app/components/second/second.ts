@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-second',
   imports: [],
-  template: ` <div>Hello je suis le second component</div> `,
+  template: ` <p>Hello je suis le second component</p> `,
   styles: ``,
 })
 export class Second {}

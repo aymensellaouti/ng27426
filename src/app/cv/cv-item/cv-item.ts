@@ -1,4 +1,4 @@
-import { Component, input } from '@angular/core';
+import { Component, input, output } from '@angular/core';
 import { Cv } from '../model/cv';
 
 @Component({
@@ -13,4 +13,10 @@ export class CvItem {
    * @var le cv à afficher
    */
   cv = input.required<Cv>();
+
+  selectCv = output<Cv>();
+
+  onClickCv() {
+    this.selectCv.emit(this.cv());
+  }
 }

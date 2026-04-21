@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col">
-    <app-cvs-list [cvs]="cvs()" />
+    <app-cvs-list (forwardCv)="onForwardCv($event)" [cvs]="cvs()" />
   </div>
   <div class="col">
     <app-cv-card [cv]="selectedCv()" />

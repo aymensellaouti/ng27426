@@ -2,7 +2,7 @@
 <ol class="list-group">
   @for (cv of cvs() ; track cv.id) {
     <li class="list-group-item">
-      <app-cv-item [cv]="cv" />
+      <app-cv-item (selectCv)="forwardCv.emit($event)" [cv]="cv" />
     </li>
   } @empty {
     <li class="list-grop-item-danger">
