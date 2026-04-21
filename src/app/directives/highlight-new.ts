@@ -16,7 +16,7 @@ export class HighlightNew implements OnInit{
   in = input('yellow');
   out = input('red');
 
-  @HostBinding('style.backgroundColor')
+  // @HostBinding('style.backgroundColor')
   bgc = signal(this.out());
   ngOnInit(): void {
     this.bgc.set(this.out());
