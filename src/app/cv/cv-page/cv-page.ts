@@ -1,15 +1,18 @@
-import { Component, signal,  } from '@angular/core';
+import { Component, inject, signal,  } from '@angular/core';
 import { Cv } from '../model/cv';
 import { CvsList } from "../cvs-list/cvs-list";
 import { CvCard } from "../cv-card/cv-card";
 import { CurrencyPipe, DatePipe, UpperCasePipe } from '@angular/common';
 import { Btc2UsdPipe } from '../../pipes/btc2-usd-pipe';
+import { LoggerSeervice } from '../../services/logger.Service';
+import { HelloService } from '../../services/hello.service';
 
 @Component({
   selector: 'app-cv-page',
   imports: [CvsList, CvCard, DatePipe, UpperCasePipe, Btc2UsdPipe, CurrencyPipe],
   templateUrl: './cv-page.html',
   styleUrl: './cv-page.css',
+  providers: []
 })
 export class CvPage {
   /**
@@ -35,6 +38,17 @@ export class CvPage {
    * Le cv sélectionné
    */
   selectedCv = signal<Cv | null>(null);
+  logger = inject(LoggerSeervice);
+  // helloService = new HelloService();
+  // Je commande une instance de LoggerService
+  constructor(
+    public helloService: HelloService
+    //public logger: LoggerSeervice
+  )
+  {
+    this.helloService.sayHello();
+    this.logger.log('cc je suis le cvComponent');
+  }
   today = signal(new Date());
   onForwardCv(cv: Cv) {
     this.selectedCv.set(cv);
