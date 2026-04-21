@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Signal, signal } from '@angular/core';
 import { Cv } from '../model/cv';
 
 
@@ -6,10 +6,10 @@ import { Cv } from '../model/cv';
   providedIn: 'root',
 })
 export class EmbaucheService {
-  #embauchees: Cv[] = [];
+  #embauchees = signal<Cv[]>([]);
 
-  getEmbauchees(): Cv[] {
-    return this.#embauchees;
+  getEmbauchees(): Signal<Cv[]> {
+    return this.#embauchees.asReadonly();
   }
   /**
    *
@@ -19,6 +19,10 @@ export class EmbaucheService {
    * @returns {boolean} return true si embauchée false sinon
    */
   embaucher(cv: Cv): boolean {
+    if(!this.#embauchees().includes(cv)) {
+      this.#embauchees.update(embauchees => [...embauchees, cv]);
+      return true;
+    }
     return false;
   }
 }
