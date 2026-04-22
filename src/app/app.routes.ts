@@ -4,11 +4,14 @@ import { CvPage } from './cv/cv-page/cv-page';
 import { MiniWordComponent } from './directives/mini-word/mini-word.component';
 import { Color } from './components/color/color';
 import { TodoComponent } from './todo/todo/todo.component';
-
+import { Second } from './components/second/second';
+//
 export const routes: Routes = [
   { path: '', component: First},
   { path: 'cv', component: CvPage},
   { path: 'todo', component: TodoComponent},
   { path: 'word', component: MiniWordComponent},
   { path: 'color', component: Color},
+  // { path: 'hello/aymen', redirectTo: 'cv'},
+  { path: 'hello/:name', component: Second},
 ];
