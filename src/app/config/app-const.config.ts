@@ -3,4 +3,5 @@ export const APP_CONST = {
   defaultImage: 'cv.png',
   loginHttpParam: 'access_token',
   loginHttpHeader: 'Authorization',
+  authToken: 'token',
 };

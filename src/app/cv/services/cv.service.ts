@@ -42,9 +42,9 @@ export class CvService {
   }
 
   deleteCvByIdFromApi(id: number): Observable<{count: number}> {
-    //const headers = new HttpHeaders().set(APP_CONST.loginHttpHeader, valeur);
+    const headers = new HttpHeaders().set(APP_CONST.loginHttpHeader, localStorage.getItem(APP_CONST.authToken) ?? '');
    // const params = new HttpParams().set(APP_CONST.loginHttpParam, valeur);
-    return this.http.delete<{ count: number }>(APP_API.cv + id, {});
+    return this.http.delete<{ count: number }>(APP_API.cv + id, {headers});
   }
 
   /**
