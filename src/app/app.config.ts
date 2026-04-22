@@ -5,12 +5,14 @@ import { routes } from './app.routes';
 import { LoggerSeervice } from './services/logger.Service';
 import { HelloService } from './services/hello.service';
 import { provideToastr } from 'ngx-toastr';
+import { provideHttpClient } from '@angular/common/http';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(routes, withComponentInputBinding()),
+    provideHttpClient(),
     // J'ajoute LoggerService à mon Menu
     LoggerSeervice,
     HelloService,

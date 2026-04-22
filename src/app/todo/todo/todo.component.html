@@ -11,6 +11,17 @@
         </li>
       }
     </ol>
+    <div class="alert alert-danger">
+      Liste des todos de l'API
+    </div>
+    <ol class="list-group list-group-warning ">
+      @for (todo of todosApi(); track todo.id) {
+        <li
+          class="list-group-item">
+          {{todo.title}}
+        </li>
+      }
+    </ol>
   </div>
   <div class="col">
     name:
