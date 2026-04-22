@@ -24,7 +24,7 @@ export class CvPage {
   /**
    * La liste des cvs à afficher
    */
-  cvs = this.cvService.getCvs();
+  cvs = signal<Cv[]>([]);
   /**
    * Le cv sélectionné
    */
@@ -42,6 +42,14 @@ export class CvPage {
     this.helloService.sayHello();
     this.logger.log('cc je suis le cvComponent');
     this.toastr.info('cc je suis le cvComponent');
+    this.cvService.getCvsFromApi().subscribe({
+      next: (cvs) => this.cvs.set(cvs),
+      error: (e) => {
+        const fakeCvSignal = this.cvService.getCvs();
+        this.cvs.set(fakeCvSignal());
+        this.toastr.error("Attention les données fictives merci de contacter l'admin")
+      }
+    })
   }
   today = signal(new Date());
   // onForwardCv(cv: Cv) {
