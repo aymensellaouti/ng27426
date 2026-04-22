@@ -7,6 +7,7 @@ import { TodoComponent } from './todo/todo/todo.component';
 import { Second } from './components/second/second';
 import { DetailsCvComponent } from './cv/details-cv/details-cv.component';
 import { NF404 } from './components/nf404/nf404';
+import { Login } from './auth/login/login';
 //
 export const routes: Routes = [
   // { path: '**', component: First},
@@ -16,6 +17,7 @@ export const routes: Routes = [
   { path: 'todo', component: TodoComponent},
   { path: 'word', component: MiniWordComponent},
   { path: 'color', component: Color},
+  { path: 'login', component: Login},
   // { path: 'hello/aymen', redirectTo: 'cv'},
   { path: 'hello/:name', component: Second},
   { path: '**', component: NF404},
