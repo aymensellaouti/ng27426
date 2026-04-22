@@ -1,5 +1,5 @@
 import { ApplicationConfig, importProvidersFrom, provideBrowserGlobalErrorListeners, provideZoneChangeDetection } from '@angular/core';
-import { provideRouter } from '@angular/router';
+import { provideRouter, withComponentInputBinding } from '@angular/router';
 
 import { routes } from './app.routes';
 import { LoggerSeervice } from './services/logger.Service';
@@ -10,12 +10,12 @@ export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
     provideZoneChangeDetection({ eventCoalescing: true }),
-    provideRouter(routes),
+    provideRouter(routes, withComponentInputBinding()),
     // J'ajoute LoggerService à mon Menu
     LoggerSeervice,
     HelloService,
     provideToastr(),
     // Bibilio externe qui travaille encore avec des modules
-    importProvidersFrom()
-  ]
+    importProvidersFrom(),
+  ],
 };
