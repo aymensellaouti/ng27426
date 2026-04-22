@@ -41,10 +41,13 @@ export class CvService {
     return this.http.get<Cv>(APP_API.cv + id);
   }
 
-  deleteCvByIdFromApi(id: number): Observable<{count: number}> {
-    const headers = new HttpHeaders().set(APP_CONST.loginHttpHeader, localStorage.getItem(APP_CONST.authToken) ?? '');
-   // const params = new HttpParams().set(APP_CONST.loginHttpParam, valeur);
-    return this.http.delete<{ count: number }>(APP_API.cv + id, {headers});
+  deleteCvByIdFromApi(id: number): Observable<{ count: number }> {
+    const headers = new HttpHeaders().set(
+      APP_CONST.loginHttpHeader,
+      localStorage.getItem(APP_CONST.authToken) ?? '',
+    );
+    // const params = new HttpParams().set(APP_CONST.loginHttpParam, valeur);
+    return this.http.delete<{ count: number }>(APP_API.cv + id, { headers });
   }
 
   /**
@@ -83,5 +86,20 @@ export class CvService {
    */
   deleteCv(cv: Cv): void {
     this.#cvs.update((cvs) => cvs.filter((actualCv) => actualCv != cv));
+  }
+
+  getCvsByName(name: string): Observable<Cv[]> {
+    const params = new HttpParams().set('filter', `{"where":{"name":{"like":"%${name}%"}}}`);
+    return this.http.get<Cv[]>(APP_API.cv, { params });
+  }
+  getCvsByProperty(property: string, value: string): Observable<Cv[]> {
+    const params = new HttpParams().set('filter', `{"where":{"${property}":"${value}"}}`);
+    return this.http.get<Cv[]>(APP_API.cv, { params });
+  }
+  addCv(cv: Cv): Observable<Cv> {
+    if (!cv.path) {
+      cv.path = '';
+    }
+    return this.http.post<Cv>(APP_API.cv, cv);
   }
 }
