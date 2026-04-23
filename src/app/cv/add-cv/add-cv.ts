@@ -17,7 +17,7 @@ export class AddCv {
         '',
         {
           validators: [Validators.required],
-          updateOn: 'change'
+          updateOn: 'change',
         },
       ],
       firstname: ['', Validators.required],
@@ -36,7 +36,7 @@ export class AddCv {
         0,
         {
           validators: [Validators.required],
-          updateOn: 'blur',
+          updateOn: 'change',
         },
       ],
     },
@@ -47,12 +47,22 @@ export class AddCv {
     },
   );
   constructor() {
-    this.name.valueChanges
-    .pipe(
-      filter(value => value.length > 3)
-    )
-    .subscribe({
+    this.name.valueChanges.pipe(filter((value) => value.length > 3)).subscribe({
       next: (valeur) => console.log(valeur),
+    });
+    if (this.age.value < 18) {
+      this.path?.disable();
+      this.path?.setValue('');
+    }
+    this.age.valueChanges.subscribe({
+      next: (age) => {
+        if (age < 18) {
+          this.path?.disable();
+          this.path?.setValue('');
+        } else {
+          this.path?.enable();
+        }
+      },
     });
   }
   addCv() {}
