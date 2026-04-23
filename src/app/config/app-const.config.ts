@@ -4,4 +4,5 @@ export const APP_CONST = {
   loginHttpParam: 'access_token',
   loginHttpHeader: 'Authorization',
   authToken: 'token',
+  savedAddForm: 'savedAddForm',
 };
