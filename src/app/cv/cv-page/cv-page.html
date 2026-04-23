@@ -1,14 +1,26 @@
-<div class="row">
+@if (cvsResources.isLoading()) {
+  <div class="alert alert-info">
+    loading...
+  </div>
+} @else {
+  <div class="row">
   <div class="col">
     <div (click)="todoService.logTodos()" class="alert alert-warning">
       {{today() | date: 'full' | uppercase }}
       <p>{{1 | btc2Usd | currency}}</p>
       <p>{{1 | btc2Usd:false}}</p>
     </div>
-    <app-cvs-list [cvs]="cvs()" />
+    <app-cvs-list [cvs]="cvsResources.value()" />
   </div>
   <div class="col">
     <app-cv-card [cv]="selectedCv()" />
   </div>
 </div>
 <app-embauche />
+}
+@if (cvsResources.error()){
+  <div class="alert alert-danger">
+    Problème d'accès au serveur
+  </div>
+}
+

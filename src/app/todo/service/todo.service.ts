@@ -1,7 +1,7 @@
-import { inject, Injectable, Signal, signal } from "@angular/core";
+import { inject, Injectable, Resource, Signal, signal } from "@angular/core";
 import { Todo } from "../model/todo";
 import { LoggerSeervice } from "../../services/logger.Service";
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, httpResource, HttpResourceRef } from "@angular/common/http";
 import { APP_API } from "../../config/app-api.config";
 import { Observable } from "rxjs";
 
@@ -33,6 +33,12 @@ export class TodoService {
     return this.http.get<TodoApi[]>(APP_API.todo);
   }
 
+  getTodosResources(): HttpResourceRef<TodoApi[]> {
+    return httpResource(() => APP_API.todo, {
+      defaultValue: [],
+    });
+  }
+
   /**
    *Elle permet d'ajouter un todo
    *
@@ -50,7 +56,7 @@ export class TodoService {
    * @returns void
    */
   deleteTodo(todo: Todo): void {
-    this.#todos.update(todos => todos.filter(actualTodo => actualTodo != todo ))
+    this.#todos.update((todos) => todos.filter((actualTodo) => actualTodo != todo));
   }
 
   /**

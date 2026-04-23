@@ -17,12 +17,12 @@ export class TodoComponent {
   // State
   todos = this.todoService.getTodos();
   todo = signal(new Todo());
-  todosApi = signal<TodoApi[]>([]);
+  todosResource = this.todoService.getTodosResources();
   constructor() {
-    this.todoService.getFakeTodos().subscribe({
-      next: (todosapi) => this.todosApi.set(todosapi),
-      error: (e) => alert('y a un problème')
-    });
+    // this.todoService.getFakeTodos().subscribe({
+    //   next: (todosapi) => this.todosApi.set(todosapi),
+    //   error: (e) => alert('y a un problème')
+    // });
   }
   addTodo() {
     this.todoService.addTodo(this.todo());

@@ -12,16 +12,30 @@
       }
     </ol>
     <div class="alert alert-danger">
-      Liste des todos de l'API
+      Liste des todos de l'API /
+      <button (click)="todosResource.reload()" class="btn btn-danger">
+        Reload todos
+      </button>
     </div>
+    @if(!todosResource.isLoading()){
     <ol class="list-group list-group-warning ">
-      @for (todo of todosApi(); track todo.id) {
+      @for (todo of todosResource.value(); track todo.id) {
         <li
           class="list-group-item">
           {{todo.title}}
         </li>
       }
     </ol>
+    } @else {
+      <div class="alert alert-info">
+        isLoading...
+      </div>
+    }
+    @if (todosResource.error()) {
+      <div class="alert alert-danger">
+        Il y a un problème
+      </div>
+    }
   </div>
   <div class="col">
     name:
