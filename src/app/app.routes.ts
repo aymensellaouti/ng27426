@@ -14,7 +14,7 @@ export const routes: Routes = [
   // { path: '**', component: First},
   { path: '', component: First},
   { path: 'cv', component: CvPage},
-  { path: 'cv/add', component: AddCv},
+  { path: 'cv/add', component: AddCv, canActivate: []},
   { path: 'cv/:id', component: DetailsCvComponent},
   { path: 'todo', component: TodoComponent},
   { path: 'word', component: MiniWordComponent},

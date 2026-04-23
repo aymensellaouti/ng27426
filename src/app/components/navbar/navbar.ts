@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
-import { RouterLink, RouterLinkActive } from '@angular/router';
+import { Component, inject } from '@angular/core';
+import { Router, RouterLink, RouterLinkActive } from '@angular/router';
+import { AuthService } from '../../auth/services/auth';
+import { APP_ROUTES } from '../../config/app-routes.config';
 
 @Component({
   selector: 'app-navbar',
@@ -8,5 +10,10 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
   styleUrl: './navbar.css',
 })
 export class Navbar {
-
+  authService = inject(AuthService);
+  router = inject(Router);
+  logout() {
+    this.authService.logout();
+    this.router.navigate([APP_ROUTES.login])
+  }
 }

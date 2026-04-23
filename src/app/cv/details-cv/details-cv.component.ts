@@ -5,6 +5,7 @@ import { CvService } from "../services/cv.service";
 import { APP_ROUTES } from "../../config/app-routes.config";
 import { DefaultImagePipe } from "../pipes/default-image-pipe";
 import { HttpErrorResponse } from "@angular/common/http";
+import { AuthService } from "../../auth/services/auth";
 
 @Component({
   selector: 'app-details-cv',
@@ -17,6 +18,7 @@ export class DetailsCvComponent implements OnInit{
   cvService = inject(CvService);
   acr = inject(ActivatedRoute);
   router = inject(Router);
+  authService = inject(AuthService);
   id = input(0);
   // cv = computed(() => {
   //   //console.log(this.id());
