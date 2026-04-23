@@ -22,13 +22,13 @@ export class App {
   todoService = inject(TodoService);
   todos =  signal<TodoApi[]>([]);
   constructor() {
-    setInterval(() => {
-      console.log('CD');
-    }, 2000)
-    this.todoService.getFakeTodos().subscribe({
-      next:(todos) => {
-        this.todos.set(todos);
-      }
-    })
+    // setInterval(() => {
+    //   console.log('CD');
+    // }, 2000)
+    // this.todoService.getFakeTodos().subscribe({
+    //   next:(todos) => {
+    //     this.todos.set(todos);
+    //   }
+    // })
   }
 }

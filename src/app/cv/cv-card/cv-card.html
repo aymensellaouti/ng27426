@@ -1,5 +1,5 @@
 @if (cv(); as cv) {
-<div class="card-container">
+<div class="card-container" data-cy="cvCard">
   <div class="card">
     <div class="front">
       <div class="cover">
@@ -57,7 +57,7 @@
           <button (click)="embaucher()" class="btn btn-primary m-1">
             embaucher
           </button>
-          <button [routerLink]="['/cv', cv.id]" class="btn btn-dark m-1">
+          <button data-cy="cvCardDetailBtn" [routerLink]="['/cv', cv.id]" class="btn btn-dark m-1">
             détails
           </button>
         </div>
