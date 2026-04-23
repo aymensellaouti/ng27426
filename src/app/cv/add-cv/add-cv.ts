@@ -1,5 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { AbstractControl, FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { filter } from 'rxjs';
 
 @Component({
   selector: 'app-add-cv',
@@ -11,14 +12,24 @@ export class AddCv {
   formBuilder = inject(FormBuilder);
   form = this.formBuilder.group(
     {
-      name: ['', Validators.required],
+      // Syntaxe 1
+      name: [
+        '',
+        {
+          validators: [Validators.required],
+          updateOn: 'change'
+        },
+      ],
       firstname: ['', Validators.required],
       path: [''],
       job: ['', Validators.required],
+      // Syntaxe 2
       cin: [
         '',
         {
           validators: [Validators.required, Validators.pattern('[0-9]{8}')],
+          asyncValidators: [],
+          updateOn: 'change',
         },
       ],
       age: [
@@ -35,7 +46,15 @@ export class AddCv {
       updateOn: 'change',
     },
   );
-  constructor() {}
+  constructor() {
+    this.name.valueChanges
+    .pipe(
+      filter(value => value.length > 3)
+    )
+    .subscribe({
+      next: (valeur) => console.log(valeur),
+    });
+  }
   addCv() {}
 
   get name(): AbstractControl {
